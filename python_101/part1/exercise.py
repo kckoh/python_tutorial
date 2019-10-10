@@ -21,7 +21,32 @@
 #             print x
 
 # Implement a function that takes a list of lists of any length and returns a list of one dimension.
+# def lists(li):
+#     oneList = []
+#     for lis in li:
+#         if type(lis) is int:
+#             oneList.append(lis)
+#         elif len(lis) >= 1:
+#             for anotherL in lis:
+#                 oneList.append(anotherL)
+#         else:
+#             oneList.append(lis)
+#     return oneList
+
+# list = [123,[1,2],[55,4],1,4,5]
+# print lists(list)
 
 # Write a function that: Gets a phrase as a parameter. Returns a new sentence with each word with the letters reversed.
+
+# def reversedPhrase(string):
+#     space = string.split()
+#     reversedWord = ""
+
+#     for i in space:
+#         reversedWord = reversedWord  + i[::-1] + ' '
+#     return reversedWord
+
+# string = "hello world from a kc!"
+# print reversedPhrase(string)
 
 
