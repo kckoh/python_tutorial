@@ -1,16 +1,6 @@
-FROM node:8-stretch  as builder
-RUN apt-get update \
-    && apt-get install -y python \
-    && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
+FROM gitpod/workspace-full
 
-WORKDIR /home/thei
-ADD package.json ./package.json
-RUN yarn --cache-folder ./ycache && rm -rf ./ycache
-RUN yarn theia build
-
-FROM node:8-stretch
-WORKDIR /home/thei
-COPY --from=builder /home/thei .
+USER root
 
 RUN apt-get update \
     && apt-get install -y python3 python3-dev python3-pip \
@@ -29,7 +19,3 @@ RUN pip3 install \
     rope \
     pydocstyle \
     yapf
-
-EXPOSE 3000
-ENV SHELL /bin/bash
-ENTRYPOINT [ "yarn", "theia", "start", "/src", "--hostname=0.0.0.0" ]
