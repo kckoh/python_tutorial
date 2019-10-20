@@ -1,6 +1,7 @@
-m1 = [[0,12,1],[0,1,2] ]
-m2 = [[1,2,3],[1,3,4],[1,1,1],[1]]
+m1 = [[0,12,1] ]
+m2 = [[1,2,3]]
 
+# must have the right rows and columns
 def add(m1,m2):
     transposed = []
     for x in range(len(m1)):
@@ -10,21 +11,41 @@ def add(m1,m2):
         transposed.append(col)
     return transposed
 
-def checkIndex(m1,m2):
-    s = []
-    a = []
-    width1 = len(m1)
-    width2 = len(m2)
-    lens = len(m1)
-    for x in range(width1):
-        s.append( len(m1[x]) )
 
-    for x in range(width2):
-        a.append( len(m2[x]) )
+def getIndex (m1):
+    rows = 0
+    cols = 0
 
-    if s[width1 -1] is a[0]:
-        print s[width1 -1], a[0]
+    for x in m1:
+        cols = cols + 1
+    for y in m1[0]:
+        rows+=1
+
+    index = (rows,cols)
+    return index
+
+
+m3 = [[1,2,3]]
+m4 = [[2],[2]]
+def multiply (m1,m2):
+    transposed = []
+    m1index = getIndex(m1)
+    m2index = getIndex(m2)
+    if m1index[1] == m2index[0]:
+        index = (m1index[0], m2index[1])
     else:
-        print "cannot multiply"
+        index = (0,0)
 
-checkIndex(m1,m2)
+    for x in m1:
+        col = []
+        for y in x:
+            for x1 in m4:
+                for y1 in x1:
+                    col.append(y*y1)
+        print col
+        transposed.append(col)
+
+    return transposed
+
+
+multiply(m3,m4)
